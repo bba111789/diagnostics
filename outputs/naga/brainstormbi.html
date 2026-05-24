@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="fr"><head>
+<html lang="fr">
+<head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Diagnostic Naga × BrainStorm|Bi — Mai 2026</title>
@@ -46,9 +47,9 @@ body.light-mode .brief-empty{color:#9090a8}
 .agency-info .name{font-size:28px;font-weight:700;color:#f0f0f5}
 .agency-info .tagline{font-size:15px;font-style:italic;color:#a0a0b8;margin-top:5px}
 .agency-info .url{font-size:13px;color:#9b8ff5;margin-top:4px}
-.score-ring{width:96px;height:96px;border-radius:50%;border:3px solid #FDCB6E;display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0}
-.score-ring .num{font-size:32px;font-weight:800;color:#FDCB6E}
-.score-ring .lbl{font-size:11px;color:#a0a0b8;letter-spacing:.07em;margin-top:2px}
+.score-ring{width:96px;height:96px;border-radius:50%;border:3px solid #FDCB6E;display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0;min-width:0}
+.score-ring .num{font-size:32px;font-weight:800;color:#FDCB6E;line-height:1}
+.score-ring .lbl{font-size:10px;color:#a0a0b8;letter-spacing:.05em;margin-top:1px;text-align:center;max-width:88px;line-height:1.25}
 /* EN BREF */
 .en-bref{background:#13131f;border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:22px 24px;margin-bottom:20px}
 .eb-label{font-size:11px;font-weight:700;letter-spacing:.09em;color:#FDCB6E;text-transform:uppercase}
@@ -167,16 +168,16 @@ tbody tr:last-child td{border-bottom:none}
 .btn-send{width:100%;background:#6C5CE7;color:#fff;border:none;border-radius:8px;padding:10px;font-size:13px;font-weight:700;cursor:pointer;margin-top:4px}
 .btn-back{width:100%;background:none;border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:8px;font-size:12px;color:#a0a0b8;cursor:pointer;margin-top:6px}
 .form-confirm{display:none;text-align:center;padding:40px 20px;color:#00B894}
-.form-confirm i{font-size:40px;display:block;margin-bottom:12px}
-/* GH PANEL */
-#gh-panel{position:fixed;bottom:0;left:0;right:322px;background:#0a0a1a;border-top:1px solid rgba(108,92,231,.25);padding:8px 18px;display:flex;align-items:center;gap:10px;z-index:300;flex-wrap:wrap}
-#gh-panel span.lbl{font-size:11px;font-weight:700;color:#9b8ff5;letter-spacing:.07em;white-space:nowrap}
-#gh-panel input{background:#13131f;border:1px solid rgba(255,255,255,.1);border-radius:6px;padding:5px 9px;font-size:12px;color:#f0f0f5}
-#gh-panel .sep{font-size:11px;color:#3a3a58}
-#gh-panel .btn-gh{background:#6C5CE7;color:#fff;border:none;border-radius:6px;padding:5px 13px;font-size:12px;font-weight:700;cursor:pointer;white-space:nowrap}
-#gh-panel .btn-gas{background:#00B894;color:#fff;border:none;border-radius:6px;padding:5px 11px;font-size:12px;font-weight:700;cursor:pointer}
-#gh-panel #deploy-status{font-size:11px;color:#a0a0b8}
-@media(max-width:900px){body{padding-right:0;padding-bottom:0}.brief-panel{position:relative;width:100%;height:auto}.hero-row,.ax-grid,.verbatims-grid,.trends-row{grid-template-columns:1fr}.design-audit,.agency-header,.cta-block{flex-direction:column}.plan-wrap{overflow-x:auto}table{min-width:580px}.design-audit{grid-template-columns:1fr}#gh-panel{right:0}}
+body.light-mode .brief-item{background:#fff;border-color:rgba(0,0,0,.08);color:#1a1a2e}
+body.light-mode .brief-empty{color:#9090a8}
+@media(max-width:900px){
+  body{padding-right:0;padding-bottom:0}
+  .brief-panel{position:relative;width:100%;height:auto}
+  .hero-row,.ax-grid,.verbatims-grid,.trends-row{grid-template-columns:1fr}
+  .design-audit,.agency-header,.cta-block{flex-direction:column}
+  .plan-wrap{overflow-x:auto}table{min-width:580px}
+  .design-audit{grid-template-columns:1fr}
+}
 .plan-sel{background:#1e1e35;border:1px solid rgba(255,255,255,.18);color:#f0f0f5;font-size:12px;cursor:pointer;padding:3px 5px;border-radius:5px;font-family:inherit;outline:none}
 .plan-sel option{background:#1e1e35;color:#f0f0f5}
 .plan-sel:hover,.plan-sel:focus{background:#2a2a48;border-color:rgba(108,92,231,.6);color:#fff}
@@ -222,7 +223,7 @@ body.light-mode .plan-prio option{background:#fff;color:#1a1a2e}
 <body>
 
 <div class="badge-bar">
-  <span>Naga — Diagnostic · Mai 2026</span>
+  <span>BrainStorm|Bi — Diagnostic · Mai 2026</span>
   <button onclick="toggleTheme()" style="background:none;border:none;cursor:pointer;color:#9b8ff5;font-size:18px;padding:0 4px"><i class="ti ti-sun" id="theme-icon"></i></button>
 </div>
 
@@ -231,23 +232,23 @@ body.light-mode .plan-prio option{background:#fff;color:#1a1a2e}
 <div class="agency-header">
   <div class="agency-info">
     <div class="name">BrainStorm | Bi</div>
-    <div class="tagline">New Business Intelligence — Prospection augmentée, lead generation BtoB</div>
+    <div class="tagline">Lead Intelligence · Prospection B2B augmentée par IA</div>
     <div class="url">brainstormbi.com</div>
   </div>
-  <div class="score-ring"><span class="num">71</span><span class="lbl">À amplifier</span></div>
+  <div class="score-ring"><span class="num">69</span><span class="lbl">À amplifier</span></div>
 </div>
 
 <div class="en-bref">
   <div class="eb-label">En bref</div>
   <div class="eb-meta">Naga × BrainStorm|Bi · Audit Mai 2026</div>
-  <div class="eb-txt">BrainStorm | Bi a construit une expertise deeptech rare en prospection B2B : une stack technique propriétaire qui analyse <strong style="color:#FDCB6E">600 To de données par jour</strong>, avec plus de 450 personas indexées et un positionnement pionnier depuis 2008. Votre track record avec des grands comptes comme SFR, Dassault, American Express, Orange, Microsoft ou BNP Paribas témoigne d'une crédibilité exceptionnelle. Le terrain est solide. Ce qui reste à construire, c'est un dispositif de conversion digitale qui transforme cette autorité technique en flux entrant de leads qualifiés. <strong style="color:#9b8ff5">Signal :</strong> Votre taux de conversion digital (estimé à 55/100) est le principal levier d'optimisation — votre site premium manque de micro-conversions et de points de contact rapides pour capturer l'intérêt des visiteurs.</div>
+  <div class="eb-txt">Naga est une <strong style="color:#FDCB6E">agence sociale marketing / narrative agency</strong> bien établie sur le marché français avec 4 implantations (Lyon, Paris, Bordeaux, Toulouse). Votre positionnement multi-implantation et votre engagement RSE (mécénat Handicap International, Woodstower) témoignent d'une structure mature et ancrée. Votre expertise créative 360° (social media, SEO/SEA, motion design) est différenciante sur le mid-market. Le terrain est solide. Ce qui reste à construire, c'est un dispositif de lead generation B2B pur et une offre ABM/data scraping qui transformerait votre positionnement généraliste en expert comptant. <strong style="color:#9b8ff5">Signal :</strong> Votre faiblesse principale réside dans l'absence d'expertise lead gen B2B pure et de solution tech propriétaire — des leviers clés pour capter les budgets marketing digitaux des grands comptes.</div>
 </div>
 
 <div class="hero-row">
   <div class="hero-left">
     <div class="hero-eyebrow">Diagnostic personnalisé</div>
-    <div class="hero-teaser">Vous avez développé une expertise technique unique en prospection augmentée. Ce diagnostic identifie les leviers marketing et digitaux qui, une fois activés, rendraient BrainStorm | Bi encore plus visible et convertissant auprès de vos cibles — ETI, Grands Comptes et marques premium du conseil/banque/assurance.</div>
-    <div class="hero-stat"><span class="hero-stat-val">+18 pts</span><span style="font-size:13px;color:#6b6b88">de potentiel moyen sur les 6 axes</span></div>
+    <div class="hero-teaser">Naga a développé une expertise créative reconnue dans l'écosystème social media et content marketing. Ce diagnostic identifie les leviers marketing B2B qui, une fois activés, permettraient à Naga de capter des clients plus grands et d'augmenter significativement la visibilité ROI chiffrée de ses actions.</div>
+    <div class="hero-stat"><span class="hero-stat-val">+16 pts</span><span style="font-size:13px;color:#6b6b88">de potentiel moyen sur les 6 axes</span></div>
     <div style="font-size:12px;color:#6b6b88;margin-top:12px">Découvrir l'analyse complète ↓</div>
   </div>
   <div class="radar-card">
@@ -255,7 +256,7 @@ body.light-mode .plan-prio option{background:#fff;color:#1a1a2e}
       <span><span style="display:inline-block;width:22px;height:3px;background:#6C5CE7;vertical-align:middle;margin-right:5px;border-radius:2px"></span>Actuel</span>
       <span><span style="display:inline-block;width:22px;height:0;border-top:2px dashed #FDCB6E;vertical-align:middle;margin-right:5px"></span>Potentiel</span>
     </div>
-    <div style="position:relative;height:260px"><canvas id="radarChart" role="img" aria-label="Radar BrainStorm|Bi 6 axes" width="608" height="311"></canvas></div>
+    <div style="position:relative;height:260px"><canvas id="radarChart" role="img" aria-label="Radar Naga 6 axes"></canvas></div>
   </div>
 </div>
 
@@ -274,72 +275,73 @@ body.light-mode .plan-prio option{background:#fff;color:#1a1a2e}
     </span>
   </div>
 </div>
+
 <div class="ax-grid">
 
 <div class="axis-card selected" id="card-s1">
-  <div class="ax-head"><button class="toggle-btn pulse on" data-tip="Ajouter au brief" id="tbtn-s1" onclick="toggleItem('s1')"><i class="ti ti-check"></i></button><button class="elim-btn" id="ebtn-s1" onclick="toggleEliminate('s1')" data-tip="Éliminer"><i class="ti ti-x"></i></button><span class="ax-icon" style="background:#F368E0"></span><span class="ax-title">Design &amp; image de marque</span><span class="ax-score-val" style="color:#F368E0">78</span></div>
-  <div class="ax-bar-bg"><div class="ax-bar-fill" style="width:78%;background:#F368E0"></div></div>
+  <div class="ax-head"><button class="toggle-btn pulse on" data-tip="Ajouter au brief" id="tbtn-s1" onclick="toggleItem('s1')"><i class="ti ti-check"></i></button><button class="elim-btn" id="ebtn-s1" onclick="toggleEliminate('s1')" data-tip="Éliminer"><i class="ti ti-x"></i></button><span class="ax-icon" style="background:#F368E0"></span><span class="ax-title">Design & image de marque</span><span class="ax-score-val" style="color:#F368E0">75</span></div>
+  <div class="ax-bar-bg"><div class="ax-bar-fill" style="width:75%;background:#F368E0"></div></div>
   <div class="col-lbl">Ce que vous faites bien</div>
-  <div class="col-txt">Site premium avec dark theme, gradients orange/ember, animations CSS avancées. Atmosphère "deep tech" cohérente avec votre positionnement. Stack Next.js/React/TypeScript moderne.</div>
+  <div class="col-txt">Identité visuelle cohérente, site moderne avec une approche narrative. Présence multi-implantation valorisée (Lyon, Paris, Bordeaux, Toulouse). Engagement RSE visible (mécénat Handicap International, Woodstower).</div>
   <div class="col-lbl">Ce qui attend davantage</div>
-  <div class="col-txt">Le parcours scroll-only limite l'exploration. Pas de sitemap intuitif, navigation profonde peu visible. Temps de chargement perfectibles sur certains assets lourds.</div>
-  <div class="ax-suggest">Suggestion — Naga optimise l'architecture UX avec une navigation sticky et des ancres rapides vers vos 5 services clés (Lead|Bi, Persona|Bi, Market|Bi, Aurority, MaBoxia).</div>
-  <div class="ax-obj">Objectif : 90/100</div>
+  <div class="col-txt">Le positionnement "agence sociale marketing" reste générique dans un marché saturé. Manque d'une promesse différenciante forte et d'une preuve tech propriétaire.</div>
+  <div class="ax-suggest">Suggestion — BrainStorm|Bi accompagne Naga dans le développement d'une offre lead gen B2B différenciée complétant votre expertise créative 360°.</div>
+  <div class="ax-obj">Objectif : 88/100</div>
+</div>
+
+<div class="axis-card" id="card-s2">
+  <div class="ax-head"><button class="toggle-btn pulse" data-tip="Ajouter au brief" id="tbtn-s2" onclick="toggleItem('s2')"><i class="ti ti-check"></i></button><button class="elim-btn" id="ebtn-s2" onclick="toggleEliminate('s2')" data-tip="Éliminer"><i class="ti ti-x"></i></button><span class="ax-icon" style="background:#6C5CE7"></span><span class="ax-title">Différenciation & positionnement</span><span class="ax-score-val" style="color:#6C5CE7">70</span></div>
+  <div class="ax-bar-bg"><div class="ax-bar-fill" style="width:70%;background:#6C5CE7"></div></div>
+  <div class="col-lbl">Ce que vous faites bien</div>
+  <div class="col-txt">Positionnement multi-implantation unique (4 agences), expertise créative transverse (social, SEO, motion), approche narrative différenciante. Équipe jeune et proactive.</div>
+  <div class="col-lbl">Ce qui attend davantage</div>
+  <div class="col-txt">Le secteur social media est saturé. Sans offre tech propriétaire ou expertise lead gen B2B, la différenciation repose uniquement sur l'exécution créative.</div>
+  <div class="ax-suggest">Suggestion — BrainStorm|Bi structure une offre complémentaire "Lead Generation B2B" avec data scraping et ABM pour différencier Naga des agences généralistes.</div>
+  <div class="ax-obj">Objectif : 86/100</div>
 </div>
 
 <div class="axis-card" id="card-s3">
   <div class="ax-head"><button class="toggle-btn pulse" data-tip="Ajouter au brief" id="tbtn-s3" onclick="toggleItem('s3')"><i class="ti ti-check"></i></button><button class="elim-btn" id="ebtn-s3" onclick="toggleEliminate('s3')" data-tip="Éliminer"><i class="ti ti-x"></i></button><span class="ax-icon" style="background:#E17055"></span><span class="ax-title">Ligne éditoriale</span><span class="ax-score-val" style="color:#E17055">72</span></div>
   <div class="ax-bar-bg"><div class="ax-bar-fill" style="width:72%;background:#E17055"></div></div>
   <div class="col-lbl">Ce que vous faites bien</div>
-  <div class="col-txt">Ton expert et assertif, positionnement haut de gamme clair. Manifeste anti-spam fort qui différencie. Présence LinkedIn structurée du fondateur avec 77+ followers actifs.</div>
+  <div class="col-txt">Contenu engagé sur les réseaux sociaux, pédagogie webmarketing, showreel professionnel. Communication RSE authentique (mécénat, engagement associatif).</div>
   <div class="col-lbl">Ce qui attend davantage</div>
-  <div class="col-txt">Peu de contenus éducatifs accessibles publiquement pour démontrer votre expertise technique (600 To/jour, scoring IA) avant le premier contact commercial.</div>
-  <div class="ax-suggest">Suggestion — Naga produit une série de contenus techniques (cas d'usage, benchmarks sectoriels) qui prouvent votre expertise en amont du parcours commercial.</div>
-  <div class="ax-obj">Objectif : 88/100</div>
-</div>
-
-<div class="axis-card" id="card-s2">
-  <div class="ax-head"><button class="toggle-btn pulse" data-tip="Ajouter au brief" id="tbtn-s2" onclick="toggleItem('s2')"><i class="ti ti-check"></i></button><button class="elim-btn" id="ebtn-s2" onclick="toggleEliminate('s2')" data-tip="Éliminer"><i class="ti ti-x"></i></button><span class="ax-icon" style="background:#6C5CE7"></span><span class="ax-title">Différenciation &amp; positionnement</span><span class="ax-score-val" style="color:#6C5CE7">85</span></div>
-  <div class="ax-bar-bg"><div class="ax-bar-fill" style="width:85%;background:#6C5CE7"></div></div>
-  <div class="col-lbl">Ce que vous faites bien</div>
-  <div class="col-txt">Positionnement ultra-spécialisé en prospection augmentée IA, impossible à confondre avec une agence marketing classique. Track record pionnier depuis 2008. Garantie x4 RDV qualifiés unique sur le marché.</div>
-  <div class="col-lbl">Ce qui attend davantage</div>
-  <div class="col-txt">La complexité de votre offre (5 produits distincts) pourrait bénéficier d'une narration unifiée plus forte qui relie tous vos services autour d'une promesse commune.</div>
-  <div class="ax-suggest">Suggestion — Naga structure une plateforme de marque qui unifie vos 5 services autour d'une promesse mère : "L'intelligence augmentée de votre prospection B2B".</div>
-  <div class="ax-obj">Objectif : 94/100</div>
-</div>
-
-<div class="axis-card" id="card-s6">
-  <div class="ax-head"><button class="toggle-btn pulse" data-tip="Ajouter au brief" id="tbtn-s6" onclick="toggleItem('s6')"><i class="ti ti-check"></i></button><button class="elim-btn" id="ebtn-s6" onclick="toggleEliminate('s6')" data-tip="Éliminer"><i class="ti ti-x"></i></button><span class="ax-icon" style="background:#00CEC9"></span><span class="ax-title">Ciblage acheteurs</span><span class="ax-score-val" style="color:#00CEC9">80</span></div>
-  <div class="ax-bar-bg"><div class="ax-bar-fill" style="width:80%;background:#00CEC9"></div></div>
-  <div class="col-lbl">Ce que vous faites bien</div>
-  <div class="col-txt">Ciblage précis sur ETI et Grands Comptes (SFR, Dassault, American Express, BNP Paribas...). Pages dédiées agences avec message adapté. Prospection spéculaire haut de gamme bien identifiée.</div>
-  <div class="col-lbl">Ce qui attend davantage</div>
-  <div class="col-txt">Pas de segmentation claire par persona décisionnaire (Marketing, Sales, DG) avec des messages spécifiques à chaque enjeu métier.</div>
-  <div class="ax-suggest">Suggestion — Naga crée 3 parcours distincts (Marketing, Sales, DG) avec des arguments métiers et des preuves sociales adaptées à chaque décideur.</div>
-  <div class="ax-obj">Objectif : 92/100</div>
+  <div class="col-txt">Peu de contenus démontrant des résultats chiffrés (ROI clients, KPIs campagnes). Absence de benchmarks sectoriels pour prouver l'expertise en amont.</div>
+  <div class="ax-suggest">Suggestion — BrainStorm|Bi produit des case studies chiffrées mettant en avant les résultats business générés pour Handicap International, GL Events, ARaymond.</div>
+  <div class="ax-obj">Objectif : 85/100</div>
 </div>
 
 <div class="axis-card" id="card-s4">
-  <div class="ax-head"><button class="toggle-btn pulse" data-tip="Ajouter au brief" id="tbtn-s4" onclick="toggleItem('s4')"><i class="ti ti-check"></i></button><button class="elim-btn" id="ebtn-s4" onclick="toggleEliminate('s4')" data-tip="Éliminer"><i class="ti ti-x"></i></button><span class="ax-icon" style="background:#FDCB6E"></span><span class="ax-title">Autorité &amp; preuve sociale</span><span class="ax-score-val" style="color:#FDCB6E">75</span></div>
-  <div class="ax-bar-bg"><div class="ax-bar-fill" style="width:75%;background:#FDCB6E"></div></div>
+  <div class="ax-head"><button class="toggle-btn pulse" data-tip="Ajouter au brief" id="tbtn-s4" onclick="toggleItem('s4')"><i class="ti ti-check"></i></button><button class="elim-btn" id="ebtn-s4" onclick="toggleEliminate('s4')" data-tip="Éliminer"><i class="ti ti-x"></i></button><span class="ax-icon" style="background:#FDCB6E"></span><span class="ax-title">Autorité & preuve sociale</span><span class="ax-score-val" style="color:#FDCB6E">68</span></div>
+  <div class="ax-bar-bg"><div class="ax-bar-fill" style="width:68%;background:#FDCB6E"></div></div>
   <div class="col-lbl">Ce que vous faites bien</div>
-  <div class="col-txt">Logos clients prestigieux visibles (12+ références majeures). Présence LinkedIn active du fondateur. Track record détaillé 2008-2025. Prix et trophées mentionnés.</div>
+  <div class="col-txt">Références clients solides (Handicap International, GL Events, ARaymond, Woodstower). Présence LinkedIn active. 4 agences = preuve de scalabilité.</div>
   <div class="col-lbl">Ce qui attend davantage</div>
-  <div class="col-txt">Pas de section témoignages clients avec citations visibles, pas de cas d'études accessibles publiquement démontrant des résultats chiffrés.</div>
-  <div class="ax-suggest">Suggestion — Naga produit 3-5 case studies détaillées avec résultats mesurés (taux de transformation, ROI généré) et témoignages vidéo/écrit.</div>
-  <div class="ax-obj">Objectif : 90/100</div>
+  <div class="col-txt">Peu de témoignages clients visibles, pas de case studies détaillées avec ROI chiffré. Faible visibilité sur la méthodologie et les process.</div>
+  <div class="ax-suggest">Suggestion — BrainStorm|Bi déploie une stratégie de contenu technique (livres blancs, webinars) démontrant l'expertise data et lead gen pour renforcer l'autorité.</div>
+  <div class="ax-obj">Objectif : 85/100</div>
 </div>
 
 <div class="axis-card" id="card-s5">
-  <div class="ax-head"><button class="toggle-btn pulse" data-tip="Ajouter au brief" id="tbtn-s5" onclick="toggleItem('s5')"><i class="ti ti-check"></i></button><button class="elim-btn" id="ebtn-s5" onclick="toggleEliminate('s5')" data-tip="Éliminer"><i class="ti ti-x"></i></button><span class="ax-icon" style="background:#00B894"></span><span class="ax-title">Dispositif de conversion</span><span class="ax-score-val" style="color:#00B894">55</span></div>
-  <div class="ax-bar-bg"><div class="ax-bar-fill" style="width:55%;background:#00B894"></div></div>
+  <div class="ax-head"><button class="toggle-btn pulse" data-tip="Ajouter au brief" id="tbtn-s5" onclick="toggleItem('s5')"><i class="ti ti-check"></i></button><button class="elim-btn" id="ebtn-s5" onclick="toggleEliminate('s5')" data-tip="Éliminer"><i class="ti ti-x"></i></button><span class="ax-icon" style="background:#00B894"></span><span class="ax-title">Dispositif de conversion</span><span class="ax-score-val" style="color:#00B894">62</span></div>
+  <div class="ax-bar-bg"><div class="ax-bar-fill" style="width:62%;background:#00B894"></div></div>
   <div class="col-lbl">Ce que vous faites bien</div>
-  <div class="col-txt">Formulaire de contact présent, structure de page claire vers la prise de contact. Positionnement premium qui filtre naturellement les prospects.</div>
+  <div class="col-txt">Formulaire de contact présent, multi-implantation permettant des rendez-vous géolocalisés. Réactivité client mentionnée dans les témoignages.</div>
   <div class="col-lbl">Ce qui attend davantage</div>
-  <div class="col-txt">Pas de CTA sticky, pas de live chat ni chatbot pour qualification rapide, pas de lead magnet technique, pas de démo ou sandbox accessible. Seul point de contact : formulaire en fin de page.</div>
-  <div class="ax-suggest">Suggestion — Naga déploie un dispositif de conversion étagé : chatbot qualifiant, lead magnets techniques (benchmarks, livres blancs), et CTA sticky de prise de RDV.</div>
-  <div class="ax-obj">Objectif : 85/100</div>
+  <div class="col-txt">Pas d'entonnoir de conversion étagé, pas de lead magnets techniques, pas de chatbot qualifiant. Seul point de contact : formulaire générique.</div>
+  <div class="ax-suggest">Suggestion — BrainStorm|Bi implémente un dispositif de conversion étagé : chatbot IA, lead magnets (benchmarks social media), CTA sticky par secteur.</div>
+  <div class="ax-obj">Objectif : 82/100</div>
+</div>
+
+<div class="axis-card" id="card-s6">
+  <div class="ax-head"><button class="toggle-btn pulse" data-tip="Ajouter au brief" id="tbtn-s6" onclick="toggleItem('s6')"><i class="ti ti-check"></i></button><button class="elim-btn" id="ebtn-s6" onclick="toggleEliminate('s6')" data-tip="Éliminer"><i class="ti ti-x"></i></button><span class="ax-icon" style="background:#00CEC9"></span><span class="ax-title">Ciblage acheteurs</span><span class="ax-score-val" style="color:#00CEC9">70</span></div>
+  <div class="ax-bar-bg"><div class="ax-bar-fill" style="width:70%;background:#00CEC9"></div></div>
+  <div class="col-lbl">Ce que vous faites bien</div>
+  <div class="col-txt">Ciblage mid-market clair (ETI, grands comptes type GL Events). Adaptation sectorielle visible (événementiel, associatif, industrie).</div>
+  <div class="col-lbl">Ce qui attend davantage</div>
+  <div class="col-txt">Pas de segmentation par persona (CMO, DG, Sales), pas de parcours dédiés par enjeu métier. Manque d'outils de data scraping pour cibler précisément.</div>
+  <div class="ax-suggest">Suggestion — BrainStorm|Bi crée 3 parcours distincts (CMO, DG, Sales) avec arguments métier adaptés et mise en place d'outils d'intent data B2B.</div>
+  <div class="ax-obj">Objectif : 86/100</div>
 </div>
 
 </div>
@@ -348,16 +350,16 @@ body.light-mode .plan-prio option{background:#fff;color:#1a1a2e}
   <div class="vb-header"><i class="ti ti-message-quote"></i>Ce que dirait votre cible idéale</div>
   <div class="verbatims-grid">
     <div class="vb-item">
-      <div class="vb-who">Directeur Marketing — ETI industrielle</div>
-      <div class="vb-txt">« Leur approche data science est impressionnante — 600 To par jour, c'est sérieux. Mais je ne vois pas de résultats chiffrés pour des entreprises comme la mienne. Est-ce que ça fonctionne vraiment en B2B complexe ? »</div>
+      <div class="vb-who">Directrice Marketing — ETI industrielle</div>
+      <div class="vb-txt">« Naga a une vraie créativité et une équipe sympa, mais j'ai du mal à visualiser le ROI concret de leurs campagnes social media. Je cherche des chiffres, pas juste de l'engagement. »</div>
     </div>
     <div class="vb-item">
-      <div class="vb-who">Directeur Commercial — Cabinet de conseil</div>
-      <div class="vb-txt">« J'ai entendu parler d'eux via LinkedIn, le fondateur semble expert. Mais sur le site, je ne trouve pas rapidement comment estimer ce que ça pourrait nous rapporter concrètement. »</div>
+      <div class="vb-who">DG — Association nationale</div>
+      <div class="vb-txt">« Leur engagement RSE nous parle, mais nous avons besoin d'une agence qui comprenne nos enjeux de collecte de fonds et de prospection de donateurs B2B. »</div>
     </div>
     <div class="vb-item">
-      <div class="vb-who">DG — Scale-up B2B</div>
-      <div class="vb-txt">« Nous cherchons un partenaire prospection haut de gamme. Le site est beau, mais l'absence de chat ou de démo immédiate nous freine — on veut qualifier rapidement sans forcément remplir un formulaire long. »</div>
+      <div class="vb-who">Responsable Com — Grand groupe événementiel</div>
+      <div class="vb-txt">« Belle présence à Lyon et Paris, mais est-ce qu'ils peuvent gérer nos enjeux de lead generation sur les salons internationaux ? C'est notre priorité 2026. »</div>
     </div>
   </div>
 </div>
@@ -365,32 +367,32 @@ body.light-mode .plan-prio option{background:#fff;color:#1a1a2e}
 <div class="section-lbl" style="margin-top:4px">Tendances sectorielles pertinentes pour vous</div>
 <div class="trends-row">
   <div class="trend-card">
-    <div class="trend-ttl">ABM (Account-Based Marketing) et hyper-personnalisation</div>
-    <div class="trend-desc">Les décideurs B2B attendent désormais une personnalisation poussée dès le premier contact. Les outils d'IA générative permettent de créer des campagnes 1:1 à grande échelle — un terrain où BrainStorm | Bi est déjà positionné mais pourrait davantage le démontrer.</div>
+    <div class="trend-ttl">Social Selling & Employee Advocacy B2B</div>
+    <div class="trend-desc">Les agences social media doivent désormais démontrer leur capacité à générer des leads qualifiés via LinkedIn, pas seulement de l'engagement. La formation des équipes clients au social selling devient un différenciateur clé.</div>
   </div>
   <div class="trend-card">
-    <div class="trend-ttl">Intent data et signaux d'achat en temps réel</div>
-    <div class="trend-desc">Le marché B2B se déplace vers l'exploitation des signaux d'intention (recherches, visits G2/Capterra, engagements LinkedIn) pour cibler les prospects au moment précis de leur recherche. Votre stack technique est prêt pour cette évolution.</div>
+    <div class="trend-ttl">IA générative pour le content marketing</div>
+    <div class="trend-desc">L'intégration de l'IA dans la production de contenus (texte, image, vidéo) révolutionne le secteur. Les agences doivent prouver qu'elles maîtrisent ces outils pour rester compétitives sur le créatif et le SEO.</div>
   </div>
 </div>
 
-<div class="section-lbl">Audit design, UX &amp; conversion — best practices 2026</div>
+<div class="section-lbl">Audit design, UX & conversion — best practices 2026</div>
 <div class="audit-list">
 <div class="design-audit">
-  <div><div class="audit-tag">UX / Navigation</div><div class="audit-name">Parcours scroll-only qui limite l'exploration</div><div class="audit-desc">Un site en scroll unique crée une expérience immersive mais prive les visiteurs d'une navigation rapide vers les contenus qui les intéressent spécifiquement. Les décideurs B2B préfèrent un contrôle direct de leur parcours.</div></div>
-  <div class="audit-side"><strong>Recommandation</strong>Naga ajoute une navigation sticky avec ancres vers vos 5 services + un CTA "Estimer mon projet" permanent.</div>
+  <div><div class="audit-tag">Positionnement</div><div class="audit-name">Marché social media saturé, différenciation faible</div><div class="audit-desc">Le positionnement "agence sociale marketing" est très concurrentiel. Sans offre complémentaire lead gen ou tech propriétaire, la différenciation repose uniquement sur la qualité d'exécution créative.</div></div>
+  <div class="audit-side"><strong>Recommandation</strong>BrainStorm|Bi structure une offre "Lead Gen B2B" complémentaire avec data scraping et ABM pour créer un positionnement unique.</div>
 </div>
 <div class="design-audit">
-  <div><div class="audit-tag">Conversion</div><div class="audit-name">Un seul point de contact — formulaire en fin de page</div><div class="audit-desc">En 2026, les sites B2B performants offrent 3-4 points de conversion différents selon l'intention : chatbot pour les curieux, démo pour les intéressés, formulaire pour les décideurs. Votre parcours unique laisse fuir les prospects non prêts à remplir un formulaire.</div></div>
-  <div class="audit-side"><strong>Recommandation</strong>Naga déploie un chatbot qualifiant + des lead magnets téléchargeables + CTA sticky pour capturer tous les niveaux d'intention.</div>
+  <div><div class="audit-tag">Conversion</div><div class="audit-name">Formulaire unique, pas de parcours étagé</div><div class="audit-desc">Le site ne propose qu'un formulaire de contact générique. Pas de chatbot, pas de lead magnets, pas de CTA contextualisés par besoin ou secteur.</div></div>
+  <div class="audit-side"><strong>Recommandation</strong>BrainStorm|Bi déploie un écosystème de conversion : chatbot qualifiant, lead magnets téléchargeables (benchmarks, guides sectoriels).</div>
 </div>
 <div class="design-audit">
-  <div><div class="audit-tag">Preuves sociales</div><div class="audit-name">Logos clients sans case studies ni témoignages</div><div class="audit-desc">Les logos SFR, Dassault, Microsoft créent la confiance initiale. Mais en l'absence de témoignages ou résultats chiffrés, le visiteur ne peut pas évaluer concrètement ce que vous avez apporté à ces clients.</div></div>
-  <div class="audit-side"><strong>Recommandation</strong>Naga produit 3 case studies détaillées avec challenge, solution, résultats mesurés et témoignage client.</div>
+  <div><div class="audit-tag">Preuves</div><div class="audit-name">Références solides mais ROI peu visible</div><div class="audit-desc">Les logos clients (Handicap International, GL Events) créent la confiance, mais l'absence de résultats chiffrés limite la crédibilité auprès des prospects B2B exigeants.</div></div>
+  <div class="audit-side"><strong>Recommandation</strong>BrainStorm|Bi produit 3-5 case studies détaillées avec challenge, solution, résultats mesurés (KPIs business, pas seulement engagement).</div>
 </div>
 <div class="design-audit">
-  <div><div class="audit-tag">Accessibilité</div><div class="audit-name">Contraste variable sur fond sombre</div><div class="audit-desc">Le design premium dark theme est efficace mais certains textes sur fonds sombres présentent un contraste insuffisant (blanc à 60% sur bg-ink-950), ce qui peut poser des problèmes d'accessibilité.</div></div>
-  <div class="audit-side"><strong>Recommandation</strong>Naga audité et ajuste les ratios de contraste pour respecter les standards WCAG AA sur l'ensemble du site.</div>
+  <div><div class="audit-tag">Ciblage</div><div class="audit-name">Pas de segmentation par persona décisionnaire</div><div class="audit-desc">Le site ne différencie pas les messages selon les profils (CMO vs DG vs Sales), ce qui réduit la pertinence perçue pour chaque décideur.</div></div>
+  <div class="audit-side"><strong>Recommandation</strong>BrainStorm|Bi crée 3 parcours distincts avec landing pages dédiées et arguments métiers adaptés à chaque persona.</div>
 </div>
 </div>
 
@@ -414,37 +416,37 @@ body.light-mode .plan-prio option{background:#fff;color:#1a1a2e}
 <div class="reco selected" id="reco-s1" style="border-left:3px solid #F368E0">
   <button class="toggle-btn pulse on" data-tip="Ajouter au brief" id="rbtn-s1" onclick="toggleItem('s1')"><i class="ti ti-check"></i></button><button class="elim-btn" id="rebtn-s1" onclick="toggleEliminate('s1')" data-tip="Éliminer"><i class="ti ti-x"></i></button>
   <div class="reco-rank" style="background:rgba(243,104,224,.15);color:#F368E0">1</div>
-  <div style="flex:1"><div class="reco-title">Optimisation UX et architecture de navigation</div><div class="reco-detail">Naga repense l'expérience de navigation avec un menu sticky, des ancres rapides vers vos 5 services clés et un parcours guidé adapté à chaque persona (Marketing, Sales, DG) — pour que chaque visiteur trouve immédiatement ce qui lui parle.</div></div>
+  <div style="flex:1"><div class="reco-title">Offre Lead Generation B2B complémentaire</div><div class="reco-detail">BrainStorm|Bi structure une offre "Lead Gen B2B" avec data scraping, scoring prédictif et ABM qui complète votre expertise créative 360° et différencie Naga des agences généralistes social media.</div></div>
 </div>
 
 <div class="reco" id="reco-s2" style="border-left:3px solid #6C5CE7">
   <button class="toggle-btn pulse" data-tip="Ajouter au brief" id="rbtn-s2" onclick="toggleItem('s2')"><i class="ti ti-check"></i></button><button class="elim-btn" id="rebtn-s2" onclick="toggleEliminate('s2')" data-tip="Éliminer"><i class="ti ti-x"></i></button>
   <div class="reco-rank" style="background:rgba(108,92,231,.15);color:#6C5CE7">2</div>
-  <div style="flex:1"><div class="reco-title">Plateforme de marque unifiée — une promesse pour 5 services</div><div class="reco-detail">BrainStorm | Bi propose 5 produits distincts qui méritent une narration commune forte. Naga structure une plateforme de marque qui relie Lead|Bi, Persona|Bi, Market|Bi, Aurority et MaBoxia autour d'une promesse mère unique et mémorable.</div></div>
+  <div style="flex:1"><div class="reco-title">Case studies chiffrées par secteur</div><div class="reco-detail">BrainStorm|Bi produit 3-5 case studies détaillées pour Handicap International, GL Events et ARaymond mettant en avant des KPIs business (leads générés, taux de conversion, ROI) pour prouver la valeur créée.</div></div>
 </div>
 
 <div class="reco" id="reco-s3" style="border-left:3px solid #E17055">
   <button class="toggle-btn pulse" data-tip="Ajouter au brief" id="rbtn-s3" onclick="toggleItem('s3')"><i class="ti ti-check"></i></button><button class="elim-btn" id="rebtn-s3" onclick="toggleEliminate('s3')" data-tip="Éliminer"><i class="ti ti-x"></i></button>
   <div class="reco-rank" style="background:rgba(225,112,85,.15);color:#E17055">3</div>
-  <div style="flex:1"><div class="reco-title">Content marketing technique — prouver avant de vendre</div><div class="reco-detail">Votre expertise technique (600 To/jour, 450+ personas) est un atout différenciant mal exploité en contenu. Naga produit une série de benchmarks sectoriels et cas d'usage qui démontrent votre leadership technique avant même le premier échange commercial.</div></div>
+  <div style="flex:1"><div class="reco-title">Dispositif de conversion étagé</div><div class="reco-detail">BrainStorm|Bi déploie un écosystème de conversion complet : chatbot IA qualifiant, lead magnets téléchargeables (benchmarks social media par secteur), CTA sticky "Auditer ma présence" pour capter tous les niveaux d'intention.</div></div>
 </div>
 
 <div class="reco" id="reco-s4" style="border-left:3px solid #FDCB6E">
   <button class="toggle-btn pulse" data-tip="Ajouter au brief" id="rbtn-s4" onclick="toggleItem('s4')"><i class="ti ti-check"></i></button><button class="elim-btn" id="rebtn-s4" onclick="toggleEliminate('s4')" data-tip="Éliminer"><i class="ti ti-x"></i></button>
   <div class="reco-rank" style="background:rgba(253,203,110,.12);color:#FDCB6E">4</div>
-  <div style="flex:1"><div class="reco-title">Case studies et témoignages clients chiffrés</div><div class="reco-detail">Vos références (SFR, Dassault, BNP Paribas...) méritent d'être valorisées avec des résultats mesurés. Naga produit 3-5 case studies détaillées incluant challenge, solution technique, ROI généré et témoignage client vidéo ou écrit.</div></div>
+  <div style="flex:1"><div class="reco-title">Parcours persona CMO / DG / Sales</div><div class="reco-detail">BrainStorm|Bi crée 3 parcours distincts avec des landing pages dédiées et des arguments métiers adaptés (notoriété pour le CMO, croissance pour le DG, pipeline pour le Sales).</div></div>
 </div>
 
 <div class="reco" id="reco-s5" style="border-left:3px solid #00B894">
   <button class="toggle-btn pulse" data-tip="Ajouter au brief" id="rbtn-s5" onclick="toggleItem('s5')"><i class="ti ti-check"></i></button><button class="elim-btn" id="rebtn-s5" onclick="toggleEliminate('s5')" data-tip="Éliminer"><i class="ti ti-x"></i></button>
   <div class="reco-rank" style="background:rgba(0,184,148,.12);color:#00B894">5</div>
-  <div style="flex:1"><div class="reco-title">Dispositif de conversion étagé — chatbot, lead magnets, CTA sticky</div><div class="reco-detail">Votre site ne propose qu'un formulaire en fin de page. Naga déploie un écosystème de conversion complet : chatbot qualifiant pour les visiteurs curieux, lead magnets techniques téléchargeables (benchmarks, livres blancs), CTA sticky permanent "Estimer mon projet".</div></div>
+  <div style="flex:1"><div class="reco-title">Content marketing technique & authority</div><div class="reco-detail">BrainStorm|Bi produit des livres blancs, webinars et benchmarks sectoriels démontrant l'expertise en social selling B2B, IA générative et ROI social media pour renforcer l'autorité thought leadership.</div></div>
 </div>
 
 <div class="reco" id="reco-s6" style="border-left:3px solid #00CEC9">
   <button class="toggle-btn pulse" data-tip="Ajouter au brief" id="rbtn-s6" onclick="toggleItem('s6')"><i class="ti ti-check"></i></button><button class="elim-btn" id="rebtn-s6" onclick="toggleEliminate('s6')" data-tip="Éliminer"><i class="ti ti-x"></i></button>
   <div class="reco-rank" style="background:rgba(0,206,201,.12);color:#00CEC9">6</div>
-  <div style="flex:1"><div class="reco-title">Parcours persona Marketing / Sales / DG</div><div class="reco-detail">Chaque décideur a des enjeux différents. Naga crée 3 parcours distincts avec des arguments métiers adaptés (efficacité commerciale pour les Sales, image de marque pour le Marketing, ROI pour la DG) et des preuves sociales sectorielles ciblées.</div></div>
+  <div style="flex:1"><div class="reco-title">Intent data et ciblage comportemental</div><div class="reco-detail">BrainStorm|Bi met en place des outils d'intent data B2B pour identifier les prospects en phase active d'achat sur les thématiques social media, SEO et content marketing.</div></div>
 </div>
 
 </div>
@@ -454,22 +456,22 @@ body.light-mode .plan-prio option{background:#fff;color:#1a1a2e}
 <table>
 <thead><tr><th></th><th>Mois</th><th style="min-width:100px;white-space:nowrap">Priorité</th><th>Action</th><th>Axe</th><th>Objectif</th><th>Livrable</th><th>Impact</th></tr></thead>
 <tbody>
-<tr id="planrow-s5"><td style="text-align:center"><div style="display:flex;gap:5px;justify-content:center;align-items:center"><button class="plan-chk pulse" data-tip="Ajouter au brief" id="pchk-s5" onclick="toggleItem('s5')"><i class="ti ti-check"></i></button><button class="plan-elim" id="pebtn-s5" onclick="toggleEliminate('s5')" data-tip="Éliminer"><i class="ti ti-x"></i></button></div></td><td><div class="plan-date-cell"><select class="plan-sel plan-month" onchange="resortPlan()"><option value="1">Jan.</option><option value="2">Fév.</option><option value="3">Mar.</option><option value="4">Avr.</option><option value="5">Mai</option><option value="6" selected="">Juin</option><option value="7">Juil.</option><option value="8">Août</option><option value="9">Sept.</option><option value="10">Oct.</option><option value="11">Nov.</option><option value="12">Déc.</option></select><select class="plan-sel plan-year" onchange="resortPlan()"><option value="2025">2025</option><option value="2026" selected="">2026</option><option value="2027">2027</option><option value="2028">2028</option><option value="2029">2029</option></select></div></td><td><select class="plan-prio" data-val="tres-haute" onchange="this.dataset.val=this.value;updatePrioColor(this)"><option value="tres-haute" selected="">Très haute</option><option value="haute">Haute</option><option value="moyenne">Moyenne</option></select></td><td><div class="plan-action">Dispositif de conversion étagé — chatbot + lead magnets + CTA sticky</div></td><td>Conversion</td><td>+40% de leads qualifiés</td><td>Chatbot, 3 lead magnets, CTA sticky</td><td>Pipeline commercial</td></tr>
-<tr id="planrow-s1"><td style="text-align:center"><div style="display:flex;gap:5px;justify-content:center;align-items:center"><button class="plan-chk pulse on" data-tip="Ajouter au brief" id="pchk-s1" onclick="toggleItem('s1')"><i class="ti ti-check"></i></button><button class="plan-elim" id="pebtn-s1" onclick="toggleEliminate('s1')" data-tip="Éliminer"><i class="ti ti-x"></i></button></div></td><td><div class="plan-date-cell"><select class="plan-sel plan-month" onchange="resortPlan()"><option value="1">Jan.</option><option value="2">Fév.</option><option value="3">Mar.</option><option value="4">Avr.</option><option value="5">Mai</option><option value="6">Juin</option><option value="7" selected="">Juil.</option><option value="8">Août</option><option value="9">Sept.</option><option value="10">Oct.</option><option value="11">Nov.</option><option value="12">Déc.</option></select><select class="plan-sel plan-year" onchange="resortPlan()"><option value="2025">2025</option><option value="2026" selected="">2026</option><option value="2027">2027</option><option value="2028">2028</option><option value="2029">2029</option></select></div></td><td><select class="plan-prio" data-val="tres-haute" onchange="this.dataset.val=this.value;updatePrioColor(this)"><option value="tres-haute" selected="">Très haute</option><option value="haute">Haute</option><option value="moyenne">Moyenne</option></select></td><td><div class="plan-action">Optimisation UX et navigation sticky</div></td><td>Design &amp; UX</td><td>Parcours fluide vers 5 services</td><td>Menu sticky, ancres rapides</td><td>Expérience améliorée</td></tr>
-<tr id="planrow-s4"><td style="text-align:center"><div style="display:flex;gap:5px;justify-content:center;align-items:center"><button class="plan-chk pulse" data-tip="Ajouter au brief" id="pchk-s4" onclick="toggleItem('s4')"><i class="ti ti-check"></i></button><button class="plan-elim" id="pebtn-s4" onclick="toggleEliminate('s4')" data-tip="Éliminer"><i class="ti ti-x"></i></button></div></td><td><div class="plan-date-cell"><select class="plan-sel plan-month" onchange="resortPlan()"><option value="1">Jan.</option><option value="2">Fév.</option><option value="3">Mar.</option><option value="4">Avr.</option><option value="5">Mai</option><option value="6">Juin</option><option value="7">Juil.</option><option value="8" selected="">Août</option><option value="9">Sept.</option><option value="10">Oct.</option><option value="11">Nov.</option><option value="12">Déc.</option></select><select class="plan-sel plan-year" onchange="resortPlan()"><option value="2025">2025</option><option value="2026" selected="">2026</option><option value="2027">2027</option><option value="2028">2028</option><option value="2029">2029</option></select></div></td><td><select class="plan-prio" data-val="haute" onchange="this.dataset.val=this.value;updatePrioColor(this)"><option value="tres-haute">Très haute</option><option value="haute" selected="">Haute</option><option value="moyenne">Moyenne</option></select></td><td><div class="plan-action">Production de 3-5 case studies client</div></td><td>Autorité</td><td>Preuves sociales chiffrées</td><td>Case studies + témoignages</td><td>Confiance prospects</td></tr>
-<tr id="planrow-s2"><td style="text-align:center"><div style="display:flex;gap:5px;justify-content:center;align-items:center"><button class="plan-chk pulse" data-tip="Ajouter au brief" id="pchk-s2" onclick="toggleItem('s2')"><i class="ti ti-check"></i></button><button class="plan-elim" id="pebtn-s2" onclick="toggleEliminate('s2')" data-tip="Éliminer"><i class="ti ti-x"></i></button></div></td><td><div class="plan-date-cell"><select class="plan-sel plan-month" onchange="resortPlan()"><option value="1">Jan.</option><option value="2">Fév.</option><option value="3">Mar.</option><option value="4">Avr.</option><option value="5">Mai</option><option value="6">Juin</option><option value="7">Juil.</option><option value="8">Août</option><option value="9" selected="">Sept.</option><option value="10">Oct.</option><option value="11">Nov.</option><option value="12">Déc.</option></select><select class="plan-sel plan-year" onchange="resortPlan()"><option value="2025">2025</option><option value="2026" selected="">2026</option><option value="2027">2027</option><option value="2028">2028</option><option value="2029">2029</option></select></div></td><td><select class="plan-prio" data-val="haute" onchange="this.dataset.val=this.value;updatePrioColor(this)"><option value="tres-haute">Très haute</option><option value="haute" selected="">Haute</option><option value="moyenne">Moyenne</option></select></td><td><div class="plan-action">Plateforme de marque unifiée</div></td><td>Différenciation</td><td>Une promesse pour 5 services</td><td>Manifeste, guidelines ton</td><td>Clarté offre</td></tr>
-<tr id="planrow-s6"><td style="text-align:center"><div style="display:flex;gap:5px;justify-content:center;align-items:center"><button class="plan-chk pulse" data-tip="Ajouter au brief" id="pchk-s6" onclick="toggleItem('s6')"><i class="ti ti-check"></i></button><button class="plan-elim" id="pebtn-s6" onclick="toggleEliminate('s6')" data-tip="Éliminer"><i class="ti ti-x"></i></button></div></td><td><div class="plan-date-cell"><select class="plan-sel plan-month" onchange="resortPlan()"><option value="1">Jan.</option><option value="2">Fév.</option><option value="3">Mar.</option><option value="4">Avr.</option><option value="5">Mai</option><option value="6">Juin</option><option value="7">Juil.</option><option value="8">Août</option><option value="9">Sept.</option><option value="10" selected="">Oct.</option><option value="11">Nov.</option><option value="12">Déc.</option></select><select class="plan-sel plan-year" onchange="resortPlan()"><option value="2025">2025</option><option value="2026" selected="">2026</option><option value="2027">2027</option><option value="2028">2028</option><option value="2029">2029</option></select></div></td><td><select class="plan-prio" data-val="moyenne" onchange="this.dataset.val=this.value;updatePrioColor(this)"><option value="tres-haute">Très haute</option><option value="haute">Haute</option><option value="moyenne" selected="">Moyenne</option></select></td><td><div class="plan-action">Parcours persona Marketing / Sales / DG</div></td><td>Ciblage</td><td>Messages adaptés par décideur</td><td>3 landing pages dédiées</td><td>Conversion ciblée</td></tr>
-<tr id="planrow-s3"><td style="text-align:center"><div style="display:flex;gap:5px;justify-content:center;align-items:center"><button class="plan-chk pulse" data-tip="Ajouter au brief" id="pchk-s3" onclick="toggleItem('s3')"><i class="ti ti-check"></i></button><button class="plan-elim" id="pebtn-s3" onclick="toggleEliminate('s3')" data-tip="Éliminer"><i class="ti ti-x"></i></button></div></td><td><div class="plan-date-cell"><select class="plan-sel plan-month" onchange="resortPlan()"><option value="1">Jan.</option><option value="2">Fév.</option><option value="3">Mar.</option><option value="4">Avr.</option><option value="5">Mai</option><option value="6">Juin</option><option value="7">Juil.</option><option value="8">Août</option><option value="9">Sept.</option><option value="10">Oct.</option><option value="11" selected="">Nov.</option><option value="12">Déc.</option></select><select class="plan-sel plan-year" onchange="resortPlan()"><option value="2025">2025</option><option value="2026" selected="">2026</option><option value="2027">2027</option><option value="2028">2028</option><option value="2029">2029</option></select></div></td><td><select class="plan-prio" data-val="moyenne" onchange="this.dataset.val=this.value;updatePrioColor(this)"><option value="tres-haute">Très haute</option><option value="haute">Haute</option><option value="moyenne" selected="">Moyenne</option></select></td><td><div class="plan-action">Content marketing technique — benchmarks sectoriels</div></td><td>Éditorial</td><td>Prouver l'expertise avant le contact</td><td>3 benchmarks + 5 cas d'usage</td><td>Autorité technique</td></tr>
+<tr id="planrow-s1"><td style="text-align:center"><div style="display:flex;gap:5px;justify-content:center;align-items:center"><button class="plan-chk pulse on" data-tip="Ajouter au brief" id="pchk-s1" onclick="toggleItem('s1')"><i class="ti ti-check"></i></button><button class="plan-elim" id="pebtn-s1" onclick="toggleEliminate('s1')" data-tip="Éliminer"><i class="ti ti-x"></i></button></div></td><td><div class="plan-date-cell"><select class="plan-sel plan-month" onchange="resortPlan()"><option value="1">Jan.</option><option value="2">Fév.</option><option value="3">Mar.</option><option value="4">Avr.</option><option value="5">Mai</option><option value="6" selected>Juin</option><option value="7">Juil.</option><option value="8">Août</option><option value="9">Sept.</option><option value="10">Oct.</option><option value="11">Nov.</option><option value="12">Déc.</option></select><select class="plan-sel plan-year" onchange="resortPlan()"><option value="2025">2025</option><option value="2026" selected>2026</option><option value="2027">2027</option></select></div></td><td><select class="plan-prio" data-val="tres-haute" onchange="this.dataset.val=this.value;updatePrioColor(this)"><option value="tres-haute" selected>Très haute</option><option value="haute">Haute</option><option value="moyenne">Moyenne</option></select></td><td><div class="plan-action">Structurer l'offre Lead Gen B2B complémentaire</div></td><td>Différenciation</td><td>Positionnement unique sur le marché</td><td>Offre commerciale, pricing</td><td>Nouveaux clients B2B</td></tr>
+<tr id="planrow-s2"><td style="text-align:center"><div style="display:flex;gap:5px;justify-content:center;align-items:center"><button class="plan-chk pulse" data-tip="Ajouter au brief" id="pchk-s2" onclick="toggleItem('s2')"><i class="ti ti-check"></i></button><button class="plan-elim" id="pebtn-s2" onclick="toggleEliminate('s2')" data-tip="Éliminer"><i class="ti ti-x"></i></button></div></td><td><div class="plan-date-cell"><select class="plan-sel plan-month" onchange="resortPlan()"><option value="1">Jan.</option><option value="2">Fév.</option><option value="3">Mar.</option><option value="4">Avr.</option><option value="5">Mai</option><option value="6">Juin</option><option value="7" selected>Juil.</option><option value="8">Août</option><option value="9">Sept.</option><option value="10">Oct.</option><option value="11">Nov.</option><option value="12">Déc.</option></select><select class="plan-sel plan-year" onchange="resortPlan()"><option value="2025">2025</option><option value="2026" selected>2026</option><option value="2027">2027</option></select></div></td><td><select class="plan-prio" data-val="haute" onchange="this.dataset.val=this.value;updatePrioColor(this)"><option value="tres-haute">Très haute</option><option value="haute" selected>Haute</option><option value="moyenne">Moyenne</option></select></td><td><div class="plan-action">Produire 3 case studies chiffrées par secteur</div></td><td>Autorité</td><td>Preuves sociales renforcées</td><td>Case studies PDF + web</td><td>Confiance prospects</td></tr>
+<tr id="planrow-s3"><td style="text-align:center"><div style="display:flex;gap:5px;justify-content:center;align-items:center"><button class="plan-chk pulse" data-tip="Ajouter au brief" id="pchk-s3" onclick="toggleItem('s3')"><i class="ti ti-check"></i></button><button class="plan-elim" id="pebtn-s3" onclick="toggleEliminate('s3')" data-tip="Éliminer"><i class="ti ti-x"></i></button></div></td><td><div class="plan-date-cell"><select class="plan-sel plan-month" onchange="resortPlan()"><option value="1">Jan.</option><option value="2">Fév.</option><option value="3">Mar.</option><option value="4">Avr.</option><option value="5">Mai</option><option value="6">Juin</option><option value="7">Juil.</option><option value="8" selected>Août</option><option value="9">Sept.</option><option value="10">Oct.</option><option value="11">Nov.</option><option value="12">Déc.</option></select><select class="plan-sel plan-year" onchange="resortPlan()"><option value="2025">2025</option><option value="2026" selected>2026</option><option value="2027">2027</option></select></div></td><td><select class="plan-prio" data-val="haute" onchange="this.dataset.val=this.value;updatePrioColor(this)"><option value="tres-haute">Très haute</option><option value="haute" selected>Haute</option><option value="moyenne">Moyenne</option></select></td><td><div class="plan-action">Déployer le dispositif de conversion étagé</div></td><td>Conversion</td><td>+40% de leads qualifiés</td><td>Chatbot, lead magnets, CTA</td><td>Pipeline commercial</td></tr>
+<tr id="planrow-s4"><td style="text-align:center"><div style="display:flex;gap:5px;justify-content:center;align-items:center"><button class="plan-chk pulse" data-tip="Ajouter au brief" id="pchk-s4" onclick="toggleItem('s4')"><i class="ti ti-check"></i></button><button class="plan-elim" id="pebtn-s4" onclick="toggleEliminate('s4')" data-tip="Éliminer"><i class="ti ti-x"></i></button></div></td><td><div class="plan-date-cell"><select class="plan-sel plan-month" onchange="resortPlan()"><option value="1">Jan.</option><option value="2">Fév.</option><option value="3">Mar.</option><option value="4">Avr.</option><option value="5">Mai</option><option value="6">Juin</option><option value="7">Juil.</option><option value="8">Août</option><option value="9" selected>Sept.</option><option value="10">Oct.</option><option value="11">Nov.</option><option value="12">Déc.</option></select><select class="plan-sel plan-year" onchange="resortPlan()"><option value="2025">2025</option><option value="2026" selected>2026</option><option value="2027">2027</option></select></div></td><td><select class="plan-prio" data-val="moyenne" onchange="this.dataset.val=this.value;updatePrioColor(this)"><option value="tres-haute">Très haute</option><option value="haute">Haute</option><option value="moyenne" selected>Moyenne</option></select></td><td><div class="plan-action">Créer les parcours persona CMO / DG / Sales</div></td><td>Ciblage</td><td>Messages adaptés par décideur</td><td>3 landing pages dédiées</td><td>Conversion ciblée</td></tr>
+<tr id="planrow-s5"><td style="text-align:center"><div style="display:flex;gap:5px;justify-content:center;align-items:center"><button class="plan-chk pulse" data-tip="Ajouter au brief" id="pchk-s5" onclick="toggleItem('s5')"><i class="ti ti-check"></i></button><button class="plan-elim" id="pebtn-s5" onclick="toggleEliminate('s5')" data-tip="Éliminer"><i class="ti ti-x"></i></button></div></td><td><div class="plan-date-cell"><select class="plan-sel plan-month" onchange="resortPlan()"><option value="1">Jan.</option><option value="2">Fév.</option><option value="3">Mar.</option><option value="4">Avr.</option><option value="5">Mai</option><option value="6">Juin</option><option value="7">Juil.</option><option value="8">Août</option><option value="9">Sept.</option><option value="10" selected>Oct.</option><option value="11">Nov.</option><option value="12">Déc.</option></select><select class="plan-sel plan-year" onchange="resortPlan()"><option value="2025">2025</option><option value="2026" selected>2026</option><option value="2027">2027</option></select></div></td><td><select class="plan-prio" data-val="moyenne" onchange="this.dataset.val=this.value;updatePrioColor(this)"><option value="tres-haute">Très haute</option><option value="haute">Haute</option><option value="moyenne" selected>Moyenne</option></select></td><td><div class="plan-action">Produire du content marketing technique (livres blancs)</div></td><td>Éditorial</td><td>Prouver l'expertise avant le contact</td><td>2 livres blancs + webinars</td><td>Autorité thought leadership</td></tr>
+<tr id="planrow-s6"><td style="text-align:center"><div style="display:flex;gap:5px;justify-content:center;align-items:center"><button class="plan-chk pulse" data-tip="Ajouter au brief" id="pchk-s6" onclick="toggleItem('s6')"><i class="ti ti-check"></i></button><button class="plan-elim" id="pebtn-s6" onclick="toggleEliminate('s6')" data-tip="Éliminer"><i class="ti ti-x"></i></button></div></td><td><div class="plan-date-cell"><select class="plan-sel plan-month" onchange="resortPlan()"><option value="1">Jan.</option><option value="2">Fév.</option><option value="3">Mar.</option><option value="4">Avr.</option><option value="5">Mai</option><option value="6">Juin</option><option value="7">Juil.</option><option value="8">Août</option><option value="9">Sept.</option><option value="10">Oct.</option><option value="11" selected>Nov.</option><option value="12">Déc.</option></select><select class="plan-sel plan-year" onchange="resortPlan()"><option value="2025">2025</option><option value="2026" selected>2026</option><option value="2027">2027</option></select></div></td><td><select class="plan-prio" data-val="moyenne" onchange="this.dataset.val=this.value;updatePrioColor(this)"><option value="tres-haute">Très haute</option><option value="haute">Haute</option><option value="moyenne" selected>Moyenne</option></select></td><td><div class="plan-action">Mettre en place l'intent data B2B</div></td><td>Ciblage</td><td>Identifier les signaux d'achat</td><td>Outil intent data + process</td><td>Prospection ciblée</td></tr>
 </tbody>
 </table>
 </div>
 
 <div class="cta-block">
   <div>
-    <div class="cta-brand">Naga × BrainStorm|Bi</div>
+    <div class="cta-brand">BrainStorm | Bi</div>
     <div class="cta-sub">diagnostics.brainstormbi.com/brainstormbi/naga.html</div>
   </div>
-  <button class="cta-btn" onclick="window.open('https://www.agence-naga.fr/contact/','_blank')">Pour nous contacter →</button>
+  <button class="cta-btn" onclick="window.open('https://brainstormbi.com/contact','_blank')">Nous contacter →</button>
 </div>
 
 </div><!-- /container -->
@@ -492,232 +494,313 @@ body.light-mode .plan-prio option{background:#fff;color:#1a1a2e}
   <div style="font-size:13px;font-weight:700;color:#9b8ff5;margin-bottom:6px">Constituez votre brief</div>
   <div style="font-size:12px;color:#6b6b88;line-height:1.7">Cliquez sur <span style="display:inline-flex;align-items:center;gap:3px;background:rgba(108,92,231,.2);border:1px solid rgba(108,92,231,.4);border-radius:4px;padding:1px 6px;font-size:11px;color:#9b8ff5"><i class="ti ti-check" style="font-size:11px"></i></span> sur les actions qui vous intéressent.<br>Elles s'ajouteront ici, dans l'ordre de vos priorités.</div>
 </div>
-    <div id="briefList"><div class="brief-item" draggable="true" data-id="s1"><i class="ti ti-grip-vertical" style="color:#3a3a58;font-size:13px;flex-shrink:0;margin-top:2px"></i><span class="brief-item-dot" style="background:#F368E0"></span><span class="brief-item-rank">1.</span><span class="brief-item-text">Optimisation UX et architecture de navigation</span><button class="brief-item-del" onclick="removeItem('s1')"><i class="ti ti-x"></i></button></div></div>
+    <div id="briefList"><div class="brief-item" draggable="true" data-id="s1"><i class="ti ti-grip-vertical" style="color:#3a3a58;font-size:13px;flex-shrink:0;margin-top:2px"></i><span class="brief-item-dot" style="background:#F368E0"></span><span class="brief-item-rank">1.</span><span class="brief-item-text">Offre Lead Generation B2B complémentaire</span><button class="brief-item-del" onclick="removeItem('s1')"><i class="ti ti-x"></i></button></div></div>
   </div>
   <div class="brief-footer">
     <button class="btn-evaluate" id="btnEvaluate" onclick="openForm()">Demander une évaluation</button>
   </div>
   <!-- Formulaire en overlay dans le panneau -->
-  <div class="brief-form-wrap" id="briefFormWrap">
+  <div class="brief-form-wrap" id="briefForm">
     <div class="bf-inner">
-      <div class="bf-title">Demander une évaluation</div>
-      <div id="formFields">
-        <div class="form-grid">
-          <div class="form-row"><label>Prénom</label><input type="text" id="f-prenom"></div>
-          <div class="form-row"><label>Nom</label><input type="text" id="f-nom"></div>
-        </div>
-        <div class="form-row"><label>E-mail</label><input type="email" id="f-email"></div>
-        <div class="form-grid">
-          <div class="form-row"><label>Fonction</label><input type="text" id="f-fonction"></div>
-          <div class="form-row"><label>Téléphone</label><input type="tel" id="f-telephone"></div>
-        </div>
-        <div class="form-row"><label>Entreprise</label><input type="text" id="f-entreprise"></div>
-        <div class="form-row"><label>Contexte (facultatif)</label><textarea id="f-contexte"></textarea></div>
-        <div class="rgpd-row"><input type="checkbox" id="f-rgpd"><label for="f-rgpd">J'accepte que mes données soient utilisées par Naga pour traiter ma demande, conformément au RGPD.</label></div>
-        <button class="btn-send" onclick="submitBrief()">Envoyer ma demande</button>
-        <button class="btn-back" onclick="closeForm()">Retour au brief</button>
+      <div class="bf-title">Votre demande d'évaluation</div>
+      <div class="form-row">
+        <label>Nom complet</label>
+        <input type="text" id="bfName" placeholder="Votre nom">
       </div>
-      <div class="form-confirm" id="formConfirm">
-        <i class="ti ti-circle-check"></i>
-        Brief transmis à Naga.<br>
-        <span style="font-size:13px;color:#a0a0b8;display:block;margin-top:8px">Réponse sous 24h ouvrées.</span>
-        <button class="btn-back" style="margin-top:16px" onclick="closeForm()">Fermer</button>
+      <div class="form-row">
+        <label>Email professionnel</label>
+        <input type="email" id="bfEmail" placeholder="vous@entreprise.fr">
       </div>
+      <div class="form-row">
+        <label>Entreprise</label>
+        <input type="text" id="bfCompany" placeholder="Nom de votre entreprise">
+      </div>
+      <div class="form-row">
+        <label>Message (optionnel)</label>
+        <textarea id="bfMessage" placeholder="Décrivez votre besoin..."></textarea>
+      </div>
+      <div class="rgpd-row">
+        <input type="checkbox" id="bfRgpd">
+        <label for="bfRgpd">J'accepte que mes données soient utilisées pour traiter ma demande. Voir notre politique de confidentialité.</label>
+      </div>
+      <button class="btn-send" id="btnSend" onclick="submitBrief()">Envoyer ma demande</button>
+      <button class="btn-back" onclick="closeForm()">Retour au brief</button>
+    </div>
+    <div class="form-confirm" id="formConfirm">
+      <i class="ti ti-check-circle"></i>
+      <div style="font-size:15px;font-weight:700;margin-bottom:6px">Demande envoyée !</div>
+      <div style="font-size:12px;color:#a0a0b8">Nous vous recontactons sous 24h ouvrées.</div>
     </div>
   </div>
 </aside>
 
 <script>
-function toggleTheme(){
-  document.body.classList.toggle('light-mode');
-  document.getElementById('theme-icon').className=document.body.classList.contains('light-mode')?'ti ti-moon':'ti ti-sun';
+// Theme toggle
+function toggleTheme() {
+  const body = document.body;
+  const icon = document.getElementById('theme-icon');
+  body.classList.toggle('light-mode');
+  if (body.classList.contains('light-mode')) {
+    icon.classList.remove('ti-sun');
+    icon.classList.add('ti-moon');
+  } else {
+    icon.classList.remove('ti-moon');
+    icon.classList.add('ti-sun');
+  }
 }
-function saveGasUrl(){
-  var v=document.getElementById('gas-url-input').value.trim();
-  if(v){localStorage.setItem('gas_url',v);document.getElementById('gas-status').textContent='✓ Sauvé';}
-}
-</script>
 
-<script>
-window.addEventListener('load',function(){
-  var ctx=document.getElementById('radarChart');
-  if(!ctx)return;
-  new Chart(ctx,{
-    type:'radar',
-    data:{
-      labels:['Différenciation','Ciblage','Autorité','Conversion','Image','Éditorial'],
-      datasets:[
-        {label:'Actuel',data:[85,80,75,55,78,72],borderColor:'#6C5CE7',backgroundColor:'rgba(108,92,231,.15)',pointBackgroundColor:'#6C5CE7',borderWidth:2,pointRadius:4},
-        {label:'Potentiel',data:[94,92,90,85,90,88],borderColor:'#FDCB6E',backgroundColor:'rgba(253,203,110,.04)',pointBackgroundColor:'#FDCB6E',borderDash:[5,4],borderWidth:2,pointRadius:4}
-      ]
-    },
-    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{r:{min:30,max:100,ticks:{stepSize:25,color:'#6b6b88',font:{size:11},backdropColor:'transparent'},grid:{color:'rgba(255,255,255,.08)'},angleLines:{color:'rgba(255,255,255,.08)'},pointLabels:{color:'#a0a0b8',font:{size:12}}}}}
-  });
-});
-</script>
-
-<script>
-var eliminated={};
-var ITEMS={
-  s1:{label:'Optimisation UX et architecture de navigation',color:'#F368E0'},
-  s2:{label:'Plateforme de marque unifiée — une promesse pour 5 services',color:'#6C5CE7'},
-  s3:{label:'Content marketing technique — prouver avant de vendre',color:'#E17055'},
-  s4:{label:'Case studies et témoignages clients chiffrés',color:'#FDCB6E'},
-  s5:{label:'Dispositif de conversion étagé — chatbot, lead magnets, CTA sticky',color:'#00B894'},
-  s6:{label:'Parcours persona Marketing / Sales / DG',color:'#00CEC9'}
+// Data for items
+const itemData = {
+  s1: { title: "Offre Lead Generation B2B complémentaire", color: "#F368E0" },
+  s2: { title: "Case studies chiffrées par secteur", color: "#6C5CE7" },
+  s3: { title: "Dispositif de conversion étagé", color: "#E17055" },
+  s4: { title: "Parcours persona CMO / DG / Sales", color: "#FDCB6E" },
+  s5: { title: "Content marketing technique & authority", color: "#00B894" },
+  s6: { title: "Intent data et ciblage comportemental", color: "#00CEC9" }
 };
-var briefOrder=[];
-var dragSrc=null;
 
-function getPriority(id){
-  var sel=document.querySelector('#planrow-'+id+' .plan-prio');
-  if(!sel)return 99;
-  return {'tres-haute':1,'haute':2,'moyenne':3}[sel.value]||99;
-}
-function insertSorted(id){
-  var p=getPriority(id),idx=briefOrder.length;
-  for(var i=0;i<briefOrder.length;i++){if(getPriority(briefOrder[i])>p){idx=i;break;}}
-  briefOrder.splice(idx,0,id);
-}
-function resortBrief(){
-  briefOrder.sort(function(a,b){return getPriority(a)-getPriority(b);});
-  renderBrief();
-}
-function updatePrioColor(sel){
-  sel.dataset.val=sel.value;
-  var row=sel.closest('tr');
-  if(!row)return;
-  var id=row.id.replace('planrow-','');
-  if(briefOrder.indexOf(id)!==-1)resortBrief();
-}
-function toggleItem(id){
-  if(eliminated[id]){eliminated[id]=false;syncEliminated();}
-  var idx=briefOrder.indexOf(id);
-  if(idx===-1)insertSorted(id); else briefOrder.splice(idx,1);
-  renderBrief(); syncButtons();
-  document.querySelectorAll('.pulse').forEach(function(el){el.classList.remove('pulse');});
-  var nudge=document.getElementById('briefNudge');
-  if(nudge)nudge.style.display='none';
-}
-function toggleEliminate(id){
-  eliminated[id]=!eliminated[id];
-  if(eliminated[id]){
-    var idx=briefOrder.indexOf(id);
-    if(idx!==-1){briefOrder.splice(idx,1);renderBrief();syncButtons();}
+let selectedItems = new Set(['s1']);
+let eliminatedItems = new Set();
+
+// Toggle item selection
+function toggleItem(id) {
+  if (eliminatedItems.has(id)) return;
+  
+  if (selectedItems.has(id)) {
+    selectedItems.delete(id);
+  } else {
+    selectedItems.add(id);
   }
-  syncEliminated();
-  document.querySelectorAll('.pulse').forEach(function(el){el.classList.remove('pulse');});
-  var nudge=document.getElementById('briefNudge');
-  if(nudge)nudge.style.display='none';
+  
+  updateUI();
+  updateBriefPanel();
 }
-function syncEliminated(){
-  Object.keys(ITEMS).forEach(function(id){
-    var on=!!eliminated[id];
-    ['ebtn-','rebtn-'].forEach(function(p){var el=document.getElementById(p+id);if(el)el.classList.toggle('on',on);});
-    var pe=document.getElementById('pebtn-'+id);if(pe)pe.classList.toggle('on',on);
-    var card=document.getElementById('card-'+id);if(card)card.classList.toggle('dimmed',on);
-    var reco=document.getElementById('reco-'+id);if(reco)reco.classList.toggle('dimmed',on);
-    var row=document.getElementById('planrow-'+id);if(row)row.classList.toggle('plan-dimmed',on);
-  });
-}
-function initSelect(id){
-  insertSorted(id);
-  renderBrief(); syncButtons();
-}
-function removeItem(id){
-  var idx=briefOrder.indexOf(id);
-  if(idx!==-1)briefOrder.splice(idx,1);
-  renderBrief(); syncButtons();
-}
-function syncButtons(){
-  Object.keys(ITEMS).forEach(function(id){
-    var on=briefOrder.indexOf(id)!==-1;
-    ['tbtn-','rbtn-','pchk-'].forEach(function(p){
-      var el=document.getElementById(p+id);
-      if(el)el.classList.toggle('on',on);
-    });
-    var c=document.getElementById('card-'+id); if(c)c.classList.toggle('selected',on);
-    var r=document.getElementById('reco-'+id); if(r)r.classList.toggle('selected',on);
-  });
-}
-function renderBrief(){
-  var list=document.getElementById('briefList');
-  var empty=document.getElementById('briefEmpty');
-  var count=document.getElementById('briefCount');
-  var btn=document.getElementById('btnEvaluate');
-  count.textContent=briefOrder.length;
-  btn.disabled=briefOrder.length===0;
-  if(briefOrder.length===0){empty.style.display='block';list.innerHTML='';return;}
-  empty.style.display='none';
-  list.innerHTML='';
-  briefOrder.forEach(function(id,i){
-    var it=ITEMS[id];
-    var div=document.createElement('div');
-    div.className='brief-item'; div.draggable=true; div.dataset.id=id;
-    div.innerHTML='<i class="ti ti-grip-vertical" style="color:#3a3a58;font-size:13px;flex-shrink:0;margin-top:2px"></i>'
-      +'<span class="brief-item-dot" style="background:'+it.color+'"></span>'
-      +'<span class="brief-item-rank">'+(i+1)+'.</span>'
-      +'<span class="brief-item-text">'+it.label+'</span>'
-      +'<button class="brief-item-del" onclick="removeItem(\''+id+'\')"><i class="ti ti-x"></i></button>';
-    div.addEventListener('dragstart',function(){dragSrc=id;});
-    div.addEventListener('dragover',function(e){e.preventDefault();div.classList.add('drag-over');});
-    div.addEventListener('dragleave',function(){div.classList.remove('drag-over');});
-    div.addEventListener('drop',function(e){
-      e.preventDefault();div.classList.remove('drag-over');
-      if(!dragSrc||dragSrc===id)return;
-      var fi=briefOrder.indexOf(dragSrc),ti=briefOrder.indexOf(id);
-      briefOrder.splice(fi,1); briefOrder.splice(ti,0,dragSrc);
-      renderBrief();
-    });
-    list.appendChild(div);
-  });
-}
-function openForm(){
-  document.getElementById('briefFormWrap').classList.add('open');
-  document.getElementById('formFields').style.display='block';
-  document.getElementById('formConfirm').style.display='none';
-}
-function closeForm(){
-  document.getElementById('briefFormWrap').classList.remove('open');
-}
-function submitBrief(){
-  var prenom=document.getElementById('f-prenom').value.trim();
-  var nom=document.getElementById('f-nom').value.trim();
-  var email=document.getElementById('f-email').value.trim();
-  var rgpd=document.getElementById('f-rgpd').checked;
-  if(!prenom||!nom||!email||!rgpd){alert('Prénom, nom, e-mail et RGPD requis.');return;}
-  var payload={
-    diagnostic:'brainstormbi.html',
-    timestamp:new Date().toISOString(),
-    prenom:prenom,nom:nom,email:email,
-    fonction:document.getElementById('f-fonction').value.trim(),
-    entreprise:document.getElementById('f-entreprise').value.trim(),
-    telephone:document.getElementById('f-telephone').value.trim(),
-    brief:briefOrder.map(function(id,i){return ITEMS[id].label+' (rang '+(i+1)+')';}),
-    contexte:document.getElementById('f-contexte').value.trim()
-  };
-  var gasUrl=localStorage.getItem('gas_url');
-  if(gasUrl){
-    try{fetch(gasUrl,{method:'POST',mode:'no-cors',body:JSON.stringify(payload),headers:{'Content-Type':'application/json'}});}
-    catch(e){console.warn('GAS',e);}
+
+// Toggle elimination
+function toggleEliminate(id) {
+  if (eliminatedItems.has(id)) {
+    eliminatedItems.delete(id);
+  } else {
+    eliminatedItems.add(id);
+    selectedItems.delete(id);
   }
-  document.getElementById('formFields').style.display='none';
-  document.getElementById('formConfirm').style.display='block';
+  
+  updateUI();
+  updateBriefPanel();
 }
-window.addEventListener('DOMContentLoaded',function(){ initSelect('s1'); });
-function resortPlan(){
-  var tbody=document.querySelector('.plan-wrap table tbody');
-  if(!tbody)return;
-  var rows=Array.from(tbody.querySelectorAll('tr'));
-  rows.sort(function(a,b){
-    var am=parseInt(a.querySelector('.plan-month').value);
-    var ay=parseInt(a.querySelector('.plan-year').value);
-    var bm=parseInt(b.querySelector('.plan-month').value);
-    var by=parseInt(b.querySelector('.plan-year').value);
-    return (ay*12+am)-(by*12+bm);
+
+// Update UI elements
+function updateUI() {
+  // Update toggle buttons
+  document.querySelectorAll('.toggle-btn').forEach(btn => {
+    const id = btn.id.replace('tbtn-', '').replace('rbtn-', '');
+    if (selectedItems.has(id)) {
+      btn.classList.add('on');
+      btn.innerHTML = '<i class="ti ti-check"></i>';
+    } else {
+      btn.classList.remove('on');
+      btn.innerHTML = '<i class="ti ti-check"></i>';
+    }
   });
-  rows.forEach(function(r){tbody.appendChild(r);});
+  
+  // Update elim buttons
+  document.querySelectorAll('.elim-btn').forEach(btn => {
+    const id = btn.id.replace('ebtn-', '').replace('rebtn-', '').replace('pebtn-', '');
+    if (eliminatedItems.has(id)) {
+      btn.classList.add('on');
+    } else {
+      btn.classList.remove('on');
+    }
+  });
+  
+  // Update axis cards
+  document.querySelectorAll('.axis-card').forEach(card => {
+    const id = card.id.replace('card-', '');
+    if (selectedItems.has(id)) {
+      card.classList.add('selected');
+    } else {
+      card.classList.remove('selected');
+    }
+    if (eliminatedItems.has(id)) {
+      card.classList.add('dimmed');
+    } else {
+      card.classList.remove('dimmed');
+    }
+  });
+  
+  // Update reco cards
+  document.querySelectorAll('.reco').forEach(reco => {
+    const id = reco.id.replace('reco-', '');
+    if (selectedItems.has(id)) {
+      reco.classList.add('selected');
+    } else {
+      reco.classList.remove('selected');
+    }
+    if (eliminatedItems.has(id)) {
+      reco.classList.add('dimmed');
+    } else {
+      reco.classList.remove('dimmed');
+    }
+  });
+  
+  // Update plan check buttons
+  document.querySelectorAll('.plan-chk').forEach(btn => {
+    const id = btn.id.replace('pchk-', '');
+    if (selectedItems.has(id)) {
+      btn.classList.add('on');
+    } else {
+      btn.classList.remove('on');
+    }
+  });
+  
+  // Update plan rows
+  document.querySelectorAll('[id^="planrow-"]').forEach(row => {
+    const id = row.id.replace('planrow-', '');
+    if (eliminatedItems.has(id)) {
+      row.classList.add('plan-dimmed');
+    } else {
+      row.classList.remove('plan-dimmed');
+    }
+  });
 }
+
+// Update brief panel
+function updateBriefPanel() {
+  const briefList = document.getElementById('briefList');
+  const briefEmpty = document.getElementById('briefEmpty');
+  const briefCount = document.getElementById('briefCount');
+  const btnEvaluate = document.getElementById('btnEvaluate');
+  
+  briefCount.textContent = selectedItems.size;
+  
+  if (selectedItems.size === 0) {
+    briefList.innerHTML = '';
+    briefEmpty.style.display = 'block';
+    btnEvaluate.disabled = true;
+  } else {
+    briefEmpty.style.display = 'none';
+    briefList.innerHTML = '';
+    let rank = 1;
+    selectedItems.forEach(id => {
+      const item = itemData[id];
+      const div = document.createElement('div');
+      div.className = 'brief-item';
+      div.draggable = true;
+      div.dataset.id = id;
+      div.innerHTML = `
+        <i class="ti ti-grip-vertical" style="color:#3a3a58;font-size:13px;flex-shrink:0;margin-top:2px"></i>
+        <span class="brief-item-dot" style="background:${item.color}"></span>
+        <span class="brief-item-rank">${rank}.</span>
+        <span class="brief-item-text">${item.title}</span>
+        <button class="brief-item-del" onclick="removeItem('${id}')"><i class="ti ti-x"></i></button>
+      `;
+      briefList.appendChild(div);
+      rank++;
+    });
+    btnEvaluate.disabled = false;
+  }
+}
+
+// Remove item from brief
+function removeItem(id) {
+  selectedItems.delete(id);
+  updateUI();
+  updateBriefPanel();
+}
+
+// Brief form functions
+function openForm() {
+  if (selectedItems.size === 0) return;
+  document.getElementById('briefForm').classList.add('open');
+}
+
+function closeForm() {
+  document.getElementById('briefForm').classList.remove('open');
+  document.getElementById('formConfirm').style.display = 'none';
+  document.querySelector('.bf-inner').style.display = 'block';
+}
+
+function submitBrief() {
+  const name = document.getElementById('bfName').value;
+  const email = document.getElementById('bfEmail').value;
+  const rgpd = document.getElementById('bfRgpd').checked;
+  
+  if (!name || !email) {
+    alert('Veuillez remplir votre nom et email.');
+    return;
+  }
+  if (!rgpd) {
+    alert('Veuillez accepter la politique de confidentialité.');
+    return;
+  }
+  
+  document.querySelector('.bf-inner').style.display = 'none';
+  document.getElementById('formConfirm').style.display = 'block';
+}
+
+// Radar chart
+const ctx = document.getElementById('radarChart').getContext('2d');
+const radarChart = new Chart(ctx, {
+  type: 'radar',
+  data: {
+    labels: ['Design & image', 'Différenciation', 'Ligne éditoriale', 'Autorité', 'Conversion', 'Ciblage'],
+    datasets: [{
+      label: 'Actuel',
+      data: [75, 70, 72, 68, 62, 70],
+      backgroundColor: 'rgba(108,92,231,0.2)',
+      borderColor: '#6C5CE7',
+      pointBackgroundColor: '#6C5CE7',
+      borderWidth: 2
+    }, {
+      label: 'Potentiel',
+      data: [88, 86, 85, 85, 82, 86],
+      backgroundColor: 'rgba(253,203,110,0.1)',
+      borderColor: '#FDCB6E',
+      pointBackgroundColor: '#FDCB6E',
+      borderWidth: 2,
+      borderDash: [5, 5]
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    scales: {
+      r: {
+        beginAtZero: true,
+        max: 100,
+        ticks: {
+          display: false,
+          stepSize: 20
+        },
+        grid: {
+          color: 'rgba(255,255,255,0.1)'
+        },
+        pointLabels: {
+          color: '#a0a0b8',
+          font: { size: 11 }
+        }
+      }
+    },
+    plugins: {
+      legend: { display: false }
+    }
+  }
+});
+
+// Priority color update
+function updatePrioColor(select) {
+  select.dataset.val = select.value;
+}
+
+// Resort plan (placeholder)
+function resortPlan() {
+  // Placeholder for sorting functionality
+}
+
+// Initialize
+updateUI();
+updateBriefPanel();
 </script>
 
-</body></html>
+</body>
+</html>
