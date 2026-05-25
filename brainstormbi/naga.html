@@ -720,11 +720,39 @@ function closeForm() {
   document.querySelector('.bf-inner').style.display = 'block';
 }
 
-function submitBrief() {
-  const name = document.getElementById('bfName').value;
-  const email = document.getElementById('bfEmail').value;
+// ── NBI Cloudflare Worker Integration ──────────────────────────────────────
+const WORKER_URL = 'https://nbi.brainstorm-ia.com/submit';
+const API_KEY = 'BSBI-BRIEF-2026';
+const HMAC_SECRET = 'dc9cf13345082a420df26cf29cc0cfc3d7c51b0e6a4022831d8d112f7ec018a5';
+
+function getSlug() {
+  // slug = nom du fichier sans extension (naga, monalisia, etc.)
+  const fn = window.location.pathname.split('/').pop() || 'unknown';
+  return fn.replace(/\.html$/, '').toLowerCase();
+}
+
+function getScores() {
+  const scores = [];
+  ['s1','s2','s3','s4','s5','s6'].forEach(id => {
+    const card = document.getElementById('card-' + id);
+    if (card) {
+      const valEl = card.querySelector('.ax-score-val');
+      const titleEl = card.querySelector('.ax-title');
+      if (valEl && titleEl) {
+        scores.push({ axe: titleEl.textContent.trim(), score: parseInt(valEl.textContent) || 0 });
+      }
+    }
+  });
+  return scores;
+}
+
+async function submitBrief() {
+  const name = document.getElementById('bfName').value.trim();
+  const email = document.getElementById('bfEmail').value.trim();
+  const message = document.getElementById('bfMessage') ? document.getElementById('bfMessage').value.trim() : '';
   const rgpd = document.getElementById('bfRgpd').checked;
-  
+  const btn = document.getElementById('btnSend');
+
   if (!name || !email) {
     alert('Veuillez remplir votre nom et email.');
     return;
@@ -733,9 +761,62 @@ function submitBrief() {
     alert('Veuillez accepter la politique de confidentialité.');
     return;
   }
-  
-  document.querySelector('.bf-inner').style.display = 'none';
-  document.getElementById('formConfirm').style.display = 'block';
+
+  // Build payload
+  const payload = {
+    diagnostic: getSlug(),
+    email: email,
+    prenom: name.split(' ')[0] || name,
+    nom: name.split(' ').slice(1).join(' ') || '',
+    selections: Array.from(selectedItems).map(id => itemData[id] ? itemData[id].title : id),
+    scores: getScores(),
+    contexte: message
+  };
+
+  // Show loading state
+  btn.disabled = true;
+  btn.textContent = 'Envoi en cours...';
+
+  try {
+    // Build and sign request
+    const payloadStr = JSON.stringify(payload);
+    const timestamp = String(Date.now());
+    const encoder = new TextEncoder();
+    const key = await crypto.subtle.importKey(
+      'raw', encoder.encode(HMAC_SECRET),
+      { name: 'HMAC', hash: 'SHA-256' },
+      false, ['sign']
+    );
+    const sig = await crypto.subtle.sign('HMAC', key, encoder.encode(timestamp + '.' + payloadStr));
+    const signature = Array.from(new Uint8Array(sig)).map(b => b.toString(16).padStart(2, '0')).join('');
+
+    const response = await fetch(WORKER_URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-API-Key': API_KEY
+      },
+      body: JSON.stringify({ signature, timestamp, payload })
+    });
+
+    if (!response.ok) {
+      const err = await response.json().catch(() => ({ error: 'Erreur inconnue' }));
+      alert(err.error || 'Erreur lors de l\'envoi');
+      btn.disabled = false;
+      btn.textContent = 'Envoyer ma demande';
+      return;
+    }
+
+    // Success — show confirm screen
+    document.querySelector('.bf-inner').style.display = 'none';
+    document.getElementById('formConfirm').style.display = 'block';
+
+  } catch (err) {
+    console.error('submitBrief error:', err);
+    alert('Erreur de connexion. Veuillez réessayer.');
+    btn.disabled = false;
+    btn.textContent = 'Envoyer ma demande';
+  }
 }
 
 // Radar chart
