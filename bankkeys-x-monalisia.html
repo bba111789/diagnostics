@@ -764,10 +764,10 @@ async function submitBrief(){
     plan:planData,
     scores:[]
   };
-  var gasUrl='https://script.google.com/macros/s/AKfycbxDe8FQSueJr2GP8xamAsHDAcFQW0wZzIdqLPUo5v1M0Iqei9gszzt_aXetvdCflIKMUQ/exec';
+  var gasUrl=localStorage.getItem('gas_url');
   if(gasUrl){
     try{await fetch(gasUrl,{method:'POST',mode:'no-cors',body:JSON.stringify(payload),headers:{'Content-Type':'application/json'}});}
-    catch(e){console.warn('GAS',e);}}
+    catch(e){console.warn('GAS',e);}
   }
   document.getElementById('formFields').style.display='none';
   document.getElementById('formConfirm').style.display='block';
@@ -775,7 +775,52 @@ async function submitBrief(){
 </script>
 
 <!-- ══════════════════════════════════════════════
-     BLOC 4 — div#gh-panel + script inline EN DERNIER
+     BLOC 4 — FIN DU FORMULAIRE
 ══════════════════════════════════════════════ -->
+<!-- GAS URL configurée dans le code — NE PAS MODIFIER MANUELLEMENT -->
+<script>
+window.addEventListener('DOMContentLoaded',function(){ initSelect('s1'); });
+async function submitBrief(){
+  var prenom=document.getElementById('f-prenom').value.trim();
+  var nom=document.getElementById('f-nom').value.trim();
+  var email=document.getElementById('f-email').value.trim();
+  var rgpd=document.getElementById('f-rgpd').checked;
+  if(!prenom||!nom||!email||!rgpd){alert('Prénom, nom, e-mail et RGPD requis.');return;}
+  var planRows=document.querySelectorAll('[id^="planrow-"]');
+  var planData=[];
+  planRows.forEach(function(row){
+    var id=row.id.replace('planrow-','');
+    var sel=row.querySelector('.plan-prio');
+    var moisSel=row.querySelector('.plan-mois');
+    var anneeSel=row.querySelector('.plan-annee');
+    if(!sel)return;
+    var parts=(sel.value||'').split('-');
+    planData.push({id:id,label:ITEMS[id]?ITEMS[id].label:'',elimine:!!eliminated[id],priorite:parts[1]||'',mois:moisSel?moisSel.value:'',annee:anneeSel?anneeSel.value:'',planElimine:row.querySelector('.plan-del')&&row.querySelector('.plan-del').checked});
+  });
+  var allSuggestions=Object.keys(ITEMS).map(function(k){return{id:k,label:ITEMS[k].label};});
+  var elimineesList=Object.keys(eliminated).filter(function(k){return eliminated[k];});
+  var payload={
+    diagnostic:'bankkeys-x-monalisia.html',
+    timestamp:new Date().toISOString(),
+    prenom:prenom,nom:nom,email:email,
+    fonction:document.getElementById('f-fonction').value.trim(),
+    entreprise:document.getElementById('f-entreprise').value.trim(),
+    telephone:document.getElementById('f-telephone').value.trim(),
+    brief:briefOrder.map(function(id){return ITEMS[id]?ITEMS[id].label:'';}),
+    briefIds:briefOrder.slice(),
+    eliminees:elimineesList,
+    suggestionsAll:allSuggestions,
+    contexte:document.getElementById('f-contexte').value.trim(),
+    plan:planData,
+    scores:[]
+  };
+  // GAS URL — configurée côté builder, NE PAS MODIFIER ICI
+  var gasUrl='https://script.google.com/macros/s/AKfycbxDe8FQSueJr2GP8xamAsHDAcFQW0wZzIdqLPUo5v1M0Iqei9gszzt_aXetvdCflIKMUQ/exec';
+  if(gasUrl){try{await fetch(gasUrl,{method:'POST',mode:'no-cors',body:JSON.stringify(payload),headers:{'Content-Type':'application/json'}});}catch(e){console.warn('GAS',e);}}
+  document.getElementById('formFields').style.display='none';
+  document.getElementById('formConfirm').style.display='block';
+}
+</script>
+
 </body>
 </html>
