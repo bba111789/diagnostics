@@ -528,6 +528,25 @@ body.light-mode .plan-prio option{background:#fff;color:#1a1a2e}
           <div class="form-row"><label>Téléphone</label><input type="tel" id="f-telephone"></div>
         </div>
         <div class="form-row"><label>Entreprise</label><input type="text" id="f-entreprise"></div>
+        <div class="form-row"><label>Budget indicatif</label>
+          <select id="f-budget">
+            <option value="">Sélectionnez une fourchette…</option>
+            <option value="< 5k€/mois">&lt; 5 000 €/mois</option>
+            <option value="5-15k€/mois">5 000 – 15 000 €/mois</option>
+            <option value="15-30k€/mois">15 000 – 30 000 €/mois</option>
+            <option value="> 30k€/mois">&gt; 30 000 €/mois</option>
+            <option value="non Precise">Non précisé</option>
+          </select>
+        </div>
+        <div class="form-row"><label>Délai de démarrage</label>
+          <select id="f-delai">
+            <option value="">Dès que possible…</option>
+            <option value="< 1 mois">&lt; 1 mois</option>
+            <option value="1-3 mois">1 – 3 mois</option>
+            <option value="3-6 mois">3 – 6 mois</option>
+            <option value="> 6 mois">&gt; 6 mois / En réflexion</option>
+          </select>
+        </div>
         <div class="form-row"><label>Contexte (facultatif)</label><textarea id="f-contexte"></textarea></div>
         <div class="rgpd-row"><input type="checkbox" id="f-rgpd"><label for="f-rgpd">J'accepte que mes données soient utilisées par Monalisia® pour traiter ma demande, conformément au RGPD.</label></div>
         <button class="btn-send" onclick="submitBrief()">Envoyer ma demande</button>
@@ -778,7 +797,7 @@ async function submitBrief(){
 <script>
 window.addEventListener('DOMContentLoaded',function(){ initSelect('s1'); });
 
-var GAS_URL='https://script.google.com/macros/s/AKfycbxYipDwRCoa_EYl3LY5l_JhGB33rMIqA6u0tCNFxpsr2i2j3BkY-BFrQ33tHv2MZPKqEg/exec';
+var WORKER_URL='https://nbi.brainstorm-ia.com/submit';
 var API_KEY='BSBI-BRIEF-2026';
 var HMAC_SECRET='dc9cf13345082a420df26cf29cc0cfc3d7c51b0e6a4022831d8d112f7ec018a5';
 
@@ -788,6 +807,7 @@ async function submitBrief(){
   var email=document.getElementById('f-email').value.trim();
   var rgpd=document.getElementById('f-rgpd').checked;
   if(!prenom||!nom||!email||!rgpd){alert('Prénom, nom, e-mail et RGPD requis.');return;}
+
   var planRows=document.querySelectorAll('[id^="planrow-"]');
   var planData=[];
   planRows.forEach(function(row){
@@ -797,28 +817,24 @@ async function submitBrief(){
     var anneeSel=row.querySelector('.plan-annee');
     if(!sel)return;
     var parts=(sel.value||'').split('-');
-    planData.push({id:id,label:ITEMS[id]?ITEMS[id].label:'',elimine:!!eliminated[id],priorite:parts[1]||'',mois:moisSel?moisSel.value:'',annee:anneeSel?anneeSel.value:'',planElimine:row.querySelector('.plan-del')&&row.querySelector('.plan-del').checked});
+    planData.push({id:id,label:ITEMS[id]?ITEMS[id].label:'',elimine:!!eliminated[id],priorite:parts[1]||'',mois:moisSel?moisSel.value:'',annee:anneeSel?anneeSel.value:''});
   });
   var allSuggestions=Object.keys(ITEMS).map(function(k){return{id:k,label:ITEMS[k].label};});
   var elimineesList=Object.keys(eliminated).filter(function(k){return eliminated[k];});
+
   var payload={
-    diagnostic:'bankkeys-x-monalisia.html',
-    timestamp:new Date().toISOString(),
-    prenom:prenom,nom:nom,email:email,
-    fonction:document.getElementById('f-fonction').value.trim(),
-    entreprise:document.getElementById('f-entreprise').value.trim(),
-    telephone:document.getElementById('f-telephone').value.trim(),
-    brief:briefOrder.map(function(id){return ITEMS[id]?ITEMS[id].label:'';}),
-    briefIds:briefOrder.slice(),
-    eliminees:elimineesList,
-    suggestionsAll:allSuggestions,
+    diagnostic: window.location.pathname.split('/').pop().replace('.html','').toLowerCase() || 'unknown',
+    email:email,
+    prenom:prenom,
+    nom:nom,
+    selections: briefOrder.map(function(id){return ITEMS[id]?ITEMS[id].label:'';}),
+    scores:[],
     contexte:document.getElementById('f-contexte').value.trim(),
-    plan:planData,
-    scores:[]
+    budget:document.getElementById('f-budget').value,
+    delai:document.getElementById('f-delai').value
   };
 
-  // ── HMAC-SHA256 signature ──────────────────────────────────────
-  var ts=payload.timestamp;
+  var ts=String(Date.now());
   var payloadStr=JSON.stringify(payload);
   var dataToSign=ts+'.'+payloadStr;
   var enc=new TextEncoder();
@@ -826,15 +842,23 @@ async function submitBrief(){
   var signatureBuffer=await crypto.subtle.sign('HMAC',keyMaterial,enc.encode(dataToSign));
   var signatureHex=Array.from(new Uint8Array(signatureBuffer)).map(function(b){return ('0'+b.toString(16)).slice(-2);}).join('');
 
-  var envelope={payload:payload,timestamp:ts,signature:signatureHex};
-  var signedJson=JSON.stringify(envelope);
+  var btn=document.querySelector('.btn-send');
+  if(btn){btn.disabled=true;btn.textContent='Envoi…';}
 
-  // ── Envoi HMAC + API key ───────────────────────────────────────
-  var finalUrl=GAS_URL+'?key='+API_KEY;
-  if(finalUrl){try{await fetch(finalUrl,{method:'POST',mode:'no-cors',body:signedJson,headers:{'Content-Type':'application/json'}});}catch(e){console.warn('GAS',e);}}
-
-  document.getElementById('formFields').style.display='none';
-  document.getElementById('formConfirm').style.display='block';
+  try {
+    var response=await fetch(WORKER_URL,{
+      method:'POST',
+      headers:{'Content-Type':'application/json','X-API-Key':API_KEY},
+      body:JSON.stringify({signature:signatureHex,timestamp:ts,payload:payload})
+    });
+    var result=await response.json();
+    if(!response.ok){throw new Error(result.error||'Erreur '+response.status);}
+    document.getElementById('formFields').style.display='none';
+    document.getElementById('formConfirm').style.display='block';
+  } catch(e){
+    alert('Erreur : '+(e.message||'Connexion impossible'));
+    if(btn){btn.disabled=false;btn.textContent='Envoyer ma demande';}
+  }
 }
 </script>
 
